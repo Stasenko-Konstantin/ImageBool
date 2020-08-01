@@ -34,14 +34,6 @@ def zap():
 def ext():
     os._exit(1)
 
-def hel():
-    toor = Toplevel()
-    toor.geometry('40x30')
-    toor.resizable(False, False)
-    txt = Label(toor, text='ЛКМ-1\nПКМ-0')
-    txt.pack()
-    toor.mainloop()
-
 def op():
     global mat
     och()
@@ -95,13 +87,12 @@ mainmenu = Menu(root)
 root.config(menu=mainmenu)
 
 filemenu = Menu(mainmenu, tearoff=0)
-filemenu.add_command(label="Открыть", command=op)
-filemenu.add_command(label="Сохранить", command=save)
-filemenu.add_command(label="Очистить", command=och)
-filemenu.add_command(label="Помощь", command=hel)
-filemenu.add_command(label="Выход", command=ext)
+filemenu.add_command(label="Открыть/Open", command=op)
+filemenu.add_command(label="Сохранить/Save", command=save)
+filemenu.add_command(label="Очистить/Clear", command=och)
+filemenu.add_command(label="Выход/Exit", command=ext)
         
-mainmenu.add_cascade(label="Файл", menu=filemenu)
+mainmenu.add_cascade(label="Файл/File", menu=filemenu)
 
 Grid.rowconfigure(root, 0, weight=1)
 Grid.columnconfigure(root, 0, weight=1)

@@ -4,7 +4,7 @@ use std::io::prelude::*;
 
 fn start(_f1: &mut [i32; 3081], _f2: &mut [i32; 3081]) { //Главная функция
 	imprint(_f1, _f2); //Вывод изображений
-	println!("\n1 - Пересечение\n2 - Слияние\n3 - Исключающее или\n4 - Отрицание 1\n5 - Отрицание 2\n6 - Выход");
+	println!("\n1 - Пересечение/Intersection\n2 - Слияние/Merger\n3 - Исключающее или/Excepting or\n4 - Отрицание 1/Negative 1\n5 - Отрицание 2/Negative 2\n6 - Выход/Exit\n7 - Повтор/Repeat");
 	let mut string = String::new();
 	io::stdin().read_line(&mut string)
 		.expect("Что-то не так");
@@ -19,6 +19,7 @@ fn start(_f1: &mut [i32; 3081], _f2: &mut [i32; 3081]) { //Главная фун
 		4 => fourth(_f1, _f2),
 		5 => fourth(_f2, _f1),
 		6 => exit(),
+		7 => main(),
 		_ => start(_f1, _f2),
 	}
 }
@@ -112,7 +113,7 @@ fn main() {
 	for i in _file1.chars() {
 	    if i == '0' || i == '1'{
 	    	if i == '1' {
-	    		v1[j] = 1;
+	    		v1[j] = 1;    	
 	    	} else if i == '0' {
 	    		v1[j] = 0;
 	    	}
