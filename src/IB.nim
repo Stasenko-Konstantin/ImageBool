@@ -1,6 +1,13 @@
 #? replace(sub = "\t", by = " ")
 import math
 
+proc start(arr1, arr2: seq[int])
+proc first(arr1, arr2: seq[int])
+proc second(arr1, arr2: seq[int])
+proc third(arr1, arr2: seq[int])
+proc fourth(arr1, arr2: seq[int])
+proc main()
+
 proc imprint(arr1, arr2: seq[int]) = 
 	
 	proc help(arr: seq[int], i: int) = 
@@ -56,7 +63,7 @@ proc first(arr1, arr2: seq[int]) =
 	var
 		arr1 = arr1
 		arr2 = arr2
-	for i in 0..arr1.len:
+	for i in 0..arr1.len-1:
 		arr1[i] = arr1[i] * arr2[i]
 	start(arr1, arr2)
 
@@ -64,7 +71,7 @@ proc second(arr1, arr2: seq[int]) =
 	var
 		arr1 = arr1
 		arr2 = arr2
-	for i in 0..arr1.len:
+	for i in 0..arr1.len-1:
 		if arr1[i] == 1 or arr2[i] == 1:
 			arr1[i] = 1
 		else:
@@ -75,7 +82,7 @@ proc third(arr1, arr2: seq[int]) =
 	var
 		arr1 = arr1
 		arr2 = arr2
-	for i in 0..arr1.len:
+	for i in 0..arr1.len-1:
 		arr1[i] = (arr1[i] - arr2[i]) ^ 2
 	start(arr1, arr2)
 
@@ -83,7 +90,7 @@ proc fourth(arr1, arr2: seq[int]) =
 	var
 		arr1 = arr1
 		arr2 = arr2
-	for i in 0..arr1.len:
+	for i in 0..arr1.len-1:
 		if arr1[i] == 0:
 			arr1[i] = 1
 		else:
