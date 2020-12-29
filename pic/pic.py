@@ -87,12 +87,12 @@ mainmenu = Menu(root)
 root.config(menu=mainmenu)
 
 filemenu = Menu(mainmenu, tearoff=0)
-filemenu.add_command(label="Открыть/Open", command=op)
-filemenu.add_command(label="Сохранить/Save", command=save)
-filemenu.add_command(label="Очистить/Clear", command=och)
-filemenu.add_command(label="Выход/Exit", command=ext)
+filemenu.add_command(label="Открыть", command=op)
+filemenu.add_command(label="Сохранить", command=save)
+filemenu.add_command(label="Очистить", command=och)
+filemenu.add_command(label="Выход", command=ext)
         
-mainmenu.add_cascade(label="Файл/File", menu=filemenu)
+mainmenu.add_cascade(label="Файл", menu=filemenu)
 
 Grid.rowconfigure(root, 0, weight=1)
 Grid.columnconfigure(root, 0, weight=1)
@@ -126,17 +126,8 @@ def zero{0}(event):\n\
         st = st + i\n\
     mat[{2}] = st\n\
     {0}.config(bg="white")\n\
-def two{0}(event):\n\
-    b = list(mat[{2}])\n\
-    b[{3}] = "2"\n\
-    st = ""\n\
-    for i in b:\n\
-        st = st + i\n\
-    mat[{2}] = st\n\
-    {0}.config(bg="gray")\n\
 {0} = Button(frame, bg="black")\n\
 {0}.bind("<Button-1>", zero{0})\n\
-{0}.bind("<Button-2>", two{0})\n\
 {0}.bind("<Button-3>", one{0})\n\
 {0}.grid(row=row_index, column=col_index, sticky=N+S+E+W)\n\
 '.format(but_name, gx, row, col))
