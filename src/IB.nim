@@ -1,3 +1,8 @@
+#[
+!ImageBool
+Автор: Стасенко Константин
+]#
+
 import math
 
 proc start(arr1, arr2: seq[int])
@@ -19,6 +24,7 @@ proc imprint(arr1, arr2: seq[int]) =
     i = 0
     j = 0
     l = 79
+
   while i < 3082:
     if i == 0 and j == 0:
       write(stdout, "")
