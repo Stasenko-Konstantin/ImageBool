@@ -3,12 +3,9 @@ from tkinter.filedialog import *
 import json
 import os
 
-rows = 39
-cols = 79
-col = -1
-row = -1
-gx = 0
-but_name = ''
+rows, cols = 39, 79
+col, row = -1, -1
+but_name, gx = '', 0
 
 def save():
     global mat
@@ -31,12 +28,8 @@ def zap():
         string = string + '0'
     return string
 
-def ext():
-    os._exit(1)
-
 def op():
     global mat
-    och()
     mat = [zap() for i in range(rows)]
     po = askopenfilename()
     with open(po, 'r') as fileo:
@@ -59,12 +52,10 @@ def op():
                 ggx += 1
                 if mas[ggx] == '1':
                     exec(
-'btn{0}.config(bg="white")\n\
-'.format(gx))
+'btn{0}.config(bg="white")\n'.format(gx))
                 if mas[ggx] == '2':
                     exec(
-'btn{0}.config(bg="gray")\n\
-'.format(gx))
+'btn{0}.config(bg="gray")\n'.format(gx))
         
 def och():
     global mat
@@ -74,8 +65,16 @@ def och():
         for j in range(cols):
             gx += 1
             exec(
-'btn{0}.config(bg="black")\n\
-'.format(gx))
+'btn{0}.config(bg="black")\n'.format(gx))
+
+def changeBt(bt, row, col, color):
+    b = list(mat[row])
+    b[col] = "0"
+    st = ""
+    for i in b:
+        st = st + i
+    mat[row] = st
+    bt.config(bg=color)
 
 mat = [zap() for i in range(rows)]
 
@@ -90,7 +89,7 @@ filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Открыть", command=op)
 filemenu.add_command(label="Сохранить", command=save)
 filemenu.add_command(label="Очистить", command=och)
-filemenu.add_command(label="Выход", command=ext)
+filemenu.add_command(label="Выход", command=lambda: os._exit(1))
         
 mainmenu.add_cascade(label="Файл", menu=filemenu)
 
@@ -110,27 +109,10 @@ for row_index in range(rows):
         col += 1
         exec(
 'global {0}\n\
-def one{0}(event):\n\
-    b = list(mat[{2}])\n\
-    b[{3}] = "0"\n\
-    st = ""\n\
-    for i in b:\n\
-        st = st + i\n\
-    mat[{2}] = st\n\
-    {0}.config(bg="black")\n\
-def zero{0}(event):\n\
-    b = list(mat[{2}])\n\
-    b[{3}] = "1"\n\
-    st = ""\n\
-    for i in b:\n\
-        st = st + i\n\
-    mat[{2}] = st\n\
-    {0}.config(bg="white")\n\
 {0} = Button(frame, bg="black")\n\
-{0}.bind("<Button-1>", zero{0})\n\
-{0}.bind("<Button-3>", one{0})\n\
-{0}.grid(row=row_index, column=col_index, sticky=N+S+E+W)\n\
-'.format(but_name, gx, row, col))
+{0}.bind("<Button-1>", lambda event: changeBt({0}, {2}, {3}, "white"))\n\
+{0}.bind("<Button-3>", lambda event: changeBt({0}, {2}, {3}, "black"))\n\
+{0}.grid(row=row_index, column=col_index, sticky=N+S+E+W)\n'.format(but_name, gx, row, col))
     col = -1
 
 root.mainloop()
