@@ -12,7 +12,7 @@ proc third(arr1, arr2: seq[int])
 proc fourth(arr1, arr2: seq[int])
 proc main()
 
-proc imprint(arr1, arr2: seq[int]) = 
+proc imprint(arr1, arr2: seq[int]) = #Вывод изображений
   
   proc help(arr: seq[int], i: int) = 
     if arr[i] == 0:
@@ -42,7 +42,7 @@ proc imprint(arr1, arr2: seq[int]) =
       write(stdout, "\n")
     i += 1
 
-proc start(arr1, arr2: seq[int]) =
+proc start(arr1, arr2: seq[int]) = #Управление пользователем
   imprint(arr1, arr2)
   echo """
 
@@ -64,7 +64,7 @@ proc start(arr1, arr2: seq[int]) =
   of "7": main()
   else: start(arr1, arr2)
 
-proc first(arr1, arr2: seq[int]) =
+proc first(arr1, arr2: seq[int]) = #Пересечение
   var
     arr1 = arr1
     arr2 = arr2
@@ -72,7 +72,7 @@ proc first(arr1, arr2: seq[int]) =
     arr1[i] = arr1[i] * arr2[i]
   start(arr1, arr2)
 
-proc second(arr1, arr2: seq[int]) =
+proc second(arr1, arr2: seq[int]) = #Слияние
   var
     arr1 = arr1
     arr2 = arr2
@@ -83,7 +83,7 @@ proc second(arr1, arr2: seq[int]) =
       arr1[i] = 0
   start(arr1, arr2)
 
-proc third(arr1, arr2: seq[int]) =
+proc third(arr1, arr2: seq[int]) = #Исключающее или
   var
     arr1 = arr1
     arr2 = arr2
@@ -91,7 +91,7 @@ proc third(arr1, arr2: seq[int]) =
     arr1[i] = (arr1[i] - arr2[i]) ^ 2
   start(arr1, arr2)
 
-proc fourth(arr1, arr2: seq[int]) =
+proc fourth(arr1, arr2: seq[int]) = #Отрицание
   var
     arr1 = arr1
     arr2 = arr2
@@ -102,7 +102,7 @@ proc fourth(arr1, arr2: seq[int]) =
       arr1[i] = 0
   start(arr1, arr2)
 
-proc fileToV(name: string): seq[int] =
+proc fileToV(name: string): seq[int] = #Чтение из файла
   var 
     arr: seq[int]
     file: string = readFile(name)
@@ -113,7 +113,7 @@ proc fileToV(name: string): seq[int] =
       arr.add(1)
   return arr
 
-proc main() =
+proc main() = #Точка входа
   var 
     arr1: seq[int] = fileToV("i1.txt") 
     arr2: seq[int] = fileToV("i2.txt")
